@@ -25,6 +25,7 @@ router.get('/new', function(req, res) {
 });
 
 router.post('/new', function (req, res) {
+	if(!fs.existsSync(`./uploads`)){ fs.mkdirSync(`./uploads`); }
 	var imgObj = JSON.parse(req.body.imageFile);
 	var imgName = imgObj.input.name;
 	var imgData = imgObj.output.image;
@@ -42,7 +43,7 @@ router.get('/now', function(req, res) {
 });
 
 router.post('/now', function (req, res) {
-	if (!fs.existsSync(`./uploads`)){ fs.mkdirSync(`./uploads`); }
+	if(!fs.existsSync(`./uploads`)){ fs.mkdirSync(`./uploads`); }
 	var imgObj = JSON.parse(req.body.imageFile);
 	var imgName = imgObj.input.name;
 	var imgData = imgObj.output.image;
