@@ -1,0 +1,25 @@
+{
+  "name": "upload-file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base64-img": "^1.0.4",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.0.0",
+    "fs": "0.0.1-security",
+    "global": "^4.3.2",
+    "hbs": "^4.0.1",
+    "json-source-map": "^0.4.0",
+    "nodemon": "^1.18.9"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}

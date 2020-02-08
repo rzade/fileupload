@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{pageTitle}}</title>
+	<link rel="stylesheet" type="text/css" href="/slim/css/slim.min.css">
+</head>
+<body>
+	<form action='http://127.0.0.1:1000/new' method='post' encType="multipart/form-data">
+        <input type='submit' value='Upload!' />
+        <hr>
+    	<div class="slim" 
+            data-label="Şəkil seçin"
+            data-label-loading=""
+            data-button-edit-label=""
+            data-button-remove-label=""
+            data-button-upload-label=""
+            data-button-cancel-label="Cancel"
+            data-button-confirm-label="Ok"
+            data-rotation="90"
+            data-size="6000,5000">
+            <!-- <img src="" /> -->
+            <input type="file" name="imageFile" />
+        </div>
+    </form>
+    <script type="text/javascript" src="/slim/js/slim.kickstart.min.js"></script>
+</body>
+</html>
