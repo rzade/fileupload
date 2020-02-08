@@ -18,19 +18,13 @@ router.get('/getfile/:filename', function(req, res, next) {
 });
 
 // File upload
-router.get('/new', function(req, res, next) {
+router.get('/new', function(req, res) {
   res.render('./uploadfile.hbs', {
     pageTitle: 'Upload file'
   });
 });
 
-router.get('/now', function(req, res, next) {
-  res.render('./uploadfilenow.hbs', {
-    pageTitle: 'Upload file'
-  });
-});
-
-router.post('/new', function (req, res, next) {
+router.post('/new', function (req, res) {
 	var imgObj = JSON.parse(req.body.imageFile);
 	var imgName = imgObj.input.name;
 	var imgData = imgObj.output.image;
@@ -38,6 +32,24 @@ router.post('/new', function (req, res, next) {
 	fs.writeFile("./uploads/"+imgName, base64Data, 'base64', function(err, data) {
 	   if(err){ return res.send(err); }
 	   res.redirect('/new');
+	});
+});
+
+router.get('/now', function(req, res) {
+  res.render('./uploadfilenow.hbs', {
+    pageTitle: 'Upload file'
+  });
+});
+
+router.post('/now', function (req, res) {
+	if (!fs.existsSync(`./uploads`)){ fs.mkdirSync(`./uploads`); }
+	var imgObj = JSON.parse(req.body.imageFile);
+	var imgName = imgObj.input.name;
+	var imgData = imgObj.output.image;
+	var base64Data = imgData.replace(/^data:image\/(png|jpeg|gif);base64,/, "");
+	fs.writeFile(`./uploads/${imgName}`, base64Data, 'base64', function(err, data) {
+	   if(err){ return res.json(false); }
+	   res.json(true);
 	});
 });
 
